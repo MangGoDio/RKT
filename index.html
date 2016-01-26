@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Random Keisan</title>
+    <link rel="stylesheet" href="./css/style.css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+
+    <div class="create" name="box">
+      <input class="create-edit" type="text" name="name" value="">
+    </div>
+
+    <div class="keisan-all" name="box">
+      <ul class="all-box">
+
+        <li class="keisan basic" name="basic">
+          <div class="keisan-box-1"></div>
+          <ul class="operator keisan-box">
+            <li class="add" name="+"></li>
+            <li class="subtract" name="-"></li>
+            <li class="multiply" name="*"><span></span></li>
+            <li class="divide" name="/"><span></span></li>
+          </ul>
+          <div class="keisan-box-2"></div>
+          <span class="div-create">=</span>
+        </li>
+
+        <li class="keisan pow" name="pow">
+          <div class="keisan-box-3"></div>
+          <div class="keisan-box-4"></div>
+          <span class="div-create">=</span>
+        </li>
+
+        <li class="keisan sqrt" name="sqrt">
+          <div class="keisan-box-5"></div>
+          <div class="keisan-box-6"></div>
+          <span class="div-create">=</span>
+        </li>
+
+        <li class="keisan random" name="random">
+          <div class="keisan-box-7"></div>
+          <span class="div-create">=</span>
+        </li>
+      </ul>
+
+    </div>
+
+    <ul class="keisan-choose">
+      <li class="choose">基础计算器</li>
+      <li>幂次计算器</li>
+      <li>根号计算器</li>
+      <li>随机数生成</li>
+    </ul>
+
+    <div class="mio">
+      <img src="./img/mio.png" alt="MangGoDio" />
+      <div class="chat">
+        <p>嘿孙贼，我是web助手Mio，根本不欢迎的欢迎您使用随意计算器v0.5 Beta，本助手尚在测试当中，暂不提供任何服务，请离我远点</p>
+      </div>
+    </div>
+    <script type="text/javascript" src="./js/script.js"></script>
+  </body>
+</html>

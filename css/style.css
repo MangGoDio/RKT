@@ -1,0 +1,449 @@
+html {
+  font-family: '微软雅黑', arial, Helvetica, sans-serif;
+}
+
+body, h1, p, input, ul, li{
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+[name=box] {
+  width: 816px;
+  height: 266px;
+  border: 8px dashed #0099ff;
+  margin: 50px auto;
+  box-sizing: border-box;
+}
+
+.create > .create-edit {
+  width: 80%;
+  height: 50px;
+  border: 3px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin: 40px 0 0 10%;
+  font-size: 30px;
+  color: #0099ff;
+  text-align: center;
+  background: #fff;
+}
+
+.create > .create-edit:focus {
+  box-shadow: 0;
+  outline: 0;
+}
+
+.keisan-all {
+  overflow: hidden;
+}
+
+.keisan-all > ul > li {
+  width: 800px;
+  height: 250px;
+  float: left;
+}
+
+.keisan > [class^=keisan-box] {
+  width: 150px;
+  height: 80px;
+  border: 4px dashed #0099ff;
+  float: left;
+  margin: 80px 0 0 10%;
+}
+
+.keisan > [class^=keisan-box] > .num-div,
+.keisan > [class^=keisan-box] > .num-div > .div-info {
+  background: #e73f32;
+}
+
+.keisan > [class^=keisan-box] > .num-div > .div-info:before {
+  border-top-color: #e73f32;
+}
+
+.keisan > .keisan-box-2 {
+  margin-left: 20px;
+}
+
+.keisan > .operator {
+  width: 80px;
+  height: 80px;
+  float: left;
+  border: 4px dashed #0099ff;
+  margin: 80px 0 0 20px;
+}
+
+.keisan > .operator > li {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background: #0099ff;
+  border-radius: 2px;
+  float: left;
+  -webkit-transition: .2s linear;
+  transition: .2s linear;
+}
+
+.keisan > .operator > li:hover {
+  background: #e73f32;
+  cursor: pointer;
+}
+
+.keisan > .operator > li.choose {
+  background: #e73f32;
+  box-shadow: 0 0 0 1px #e73f32;
+}
+
+.operator > .add {
+  margin: 8px 5px 0 8px;
+}
+
+.add:before, .add:after, .multiply > span:before, .multiply > span:after  {
+  content: '';
+  position: absolute;
+  background: #fff;
+}
+
+.add:before {
+  width: 18px;
+  height: 2px;
+  left: 6px;
+  top: 14px;
+}
+
+.add:after {
+  width: 2px;
+  height: 18px;
+  left: 14px;
+  top: 6px;
+}
+
+.operator > .subtract {
+  margin: 8px 0 0;
+}
+
+.subtract:before {
+  content: '';
+  position: absolute;
+  background: #fff;
+  width: 18px;
+  height: 2px;
+  left: 6px;
+  top: 14px;
+}
+
+.operator > .multiply {
+  margin: 5px 0 0 8px;
+}
+
+.multiply > span {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 6px;
+  top: 6px;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+
+.multiply > span:before {
+  width: 18px;
+  height: 2px;
+  top: 8px;
+}
+
+.multiply > span:after {
+  width: 2px;
+  height: 18px;
+  left: 8px;
+}
+
+.operator > .divide {
+  margin: 5px 0 0 5px;
+}
+
+.divide > span {
+  position: absolute;
+  background: #fff;
+  width: 18px;
+  height: 2px;
+  left: 6px;
+  top: 14px;
+}
+
+.divide > span:before, .divide > span:after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 4px;
+  background: #fff;
+  left: 7px;
+}
+
+.divide > span:before {
+  top: 5px;
+}
+
+.divide > span:after {
+  bottom: 5px;
+}
+
+.keisan > .div-create {
+  float: left;
+  margin: 105px 0 0 20px;
+  width: 60px;
+  height: 35px;
+  color: #0099ff;
+  background: #fff;
+  border-radius: 4px;
+  border: 2px solid #0099ff;
+  font-size: 40px;
+  font-weight: 600;
+  font-family: '微软雅黑';
+  line-height: 30px;
+  text-align: center;
+}
+
+.keisan > .div-create:hover {
+  color: #fff;
+  background: #0099ff;
+  cursor: pointer;
+}
+
+.num-div {
+  width: 96px;
+  height: 61.8px;
+  background: #0099ff;
+  border-radius: 5px;
+  padding: 0 14px;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 200px;
+  -webkit-transform: translate3d(0,0,0);
+          transform: translate3d(0,0,0);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-perspective: 1000;
+          perspective: 1000;
+  -webkit-transition: box-shadow 200ms ease, -webkit-transform 200ms ease;
+  transition: box-shadow 200ms ease, -webkit-transform 200ms ease;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+  transition: transform 200ms ease, box-shadow 200ms ease, -webkit-transform 200ms ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08),
+              0 2px 2px rgba(0,0,0,0.15);
+}
+
+.num-div:hover {
+  -webkit-transform: translateY(-4px);
+      -ms-transform: translateY(-4px);
+          transform: translateY(-4px);
+  box-shadow: 0 6px 7px rgba(0, 0, 0, 0.25),
+              0 11px 20px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+}
+
+.num-div > .div-answer {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+  line-height: 61.8px;
+  box-sizing: border-box;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  cursor: move;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.num-div > .div-answer:hover + .div-info {
+  top: -35px;
+  opacity: 1;
+}
+
+.num-div > .div-info {
+  position: absolute;
+  left: -20px;
+  top: -25px;
+  width: 155px;
+  text-align: center;
+  padding: 3px 5px;
+  background: #0099ff;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 10px;
+  opacity: 0;
+  -webkit-transition: .4s cubic-bezier(.68,-0.88,.48,2.02);
+  transition: .4s cubic-bezier(.68,-0.88,.48,2.02);
+}
+
+.num-div > .div-info:before {
+  content: '';
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: -9px;
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  border-top-color: #0099ff;
+}
+
+.keisan-choose {
+  width: 408px;
+  margin: 50px auto;
+}
+
+.keisan-choose > li {
+  float: left;
+  width: 100px;
+  height: 30px;
+  background: #fff;
+  border: 1px solid #eee;
+  color: #0099ff;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.keisan-choose > li.choose {
+  background: #0099ff;
+  color: #fff;
+}
+
+/* mio精灵 */
+.mio {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 5;
+}
+
+.mio > img {
+  width: 120px;
+  border-radius: 60px;
+  cursor: pointer;
+  -webkit-animation: show 1s cubic-bezier(.68,-0.88,.48,2.02);
+          animation: show 1s cubic-bezier(.68,-0.88,.48,2.02);
+}
+
+.mio > .chat {
+  position: absolute;
+  width: 200px;
+  left: -200px;
+  top: -90px;
+  background: #0099ff;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 10px;
+  opacity: 0;
+  transition: .5s ease-in-out;
+  -webkit-transform-origin: right bottom;
+      -ms-transform-origin: right bottom;
+          transform-origin: right bottom;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08),
+              0 2px 3px rgba(0,0,0,0.15);
+}
+
+.mio > .chat.show {
+  -webkit-animation: chat .5s cubic-bezier(.68,-0.88,.48,2.02) forwards;
+          animation: chat .5s cubic-bezier(.68,-0.88,.48,2.02) forwards;
+}
+
+.mio > .chat:after {
+  content: "";
+  position: absolute;
+  bottom: -39px;
+  right: 0;
+  width: 32px;
+  height: 50px;
+  border: 0 solid transparent;
+  border-top: 19px solid #0099ff;
+  border-radius: 100px 0 0 0;
+  -webkit-transform: rotate(270deg);
+      -ms-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+
+.mio > .chat > p {
+  color: #fff;
+}
+
+.mio > .chat > p > span{
+  display: block;
+  font-size: 16px;
+  text-align: center;
+}
+
+@-webkit-keyframes show {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  80% {
+    opacity: 1;
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  80% {
+    opacity: 1;
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@-webkit-keyframes chat {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes chat {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
