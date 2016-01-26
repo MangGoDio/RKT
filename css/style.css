@@ -11,25 +11,30 @@ ul {
   list-style: none;
 }
 
+body {
+  background: #373737;
+}
+
+
 [name=box] {
   width: 816px;
-  height: 266px;
-  border: 8px dashed #0099ff;
-  margin: 50px auto;
+  height: 206px;
+  margin: 20px auto;
   box-sizing: border-box;
 }
 
 .create > .create-edit {
   width: 80%;
   height: 50px;
-  border: 3px solid #ddd;
   border-radius: 5px;
   box-sizing: border-box;
   margin: 40px 0 0 10%;
   font-size: 30px;
-  color: #0099ff;
+  color: #000;
   text-align: center;
-  background: #fff;
+  background: #c2c3c3;
+  box-shadow: 1px 1px 3px #666 inset;
+  outline: 0;
 }
 
 .create > .create-edit:focus {
@@ -50,18 +55,20 @@ ul {
 .keisan > [class^=keisan-box] {
   width: 150px;
   height: 80px;
-  border: 4px dashed #0099ff;
+  border-radius: 6px;
+  background: #c2c3c3;
+  box-shadow: 1px 1px 3px #666 inset;
   float: left;
   margin: 80px 0 0 10%;
 }
 
 .keisan > [class^=keisan-box] > .num-div,
 .keisan > [class^=keisan-box] > .num-div > .div-info {
-  background: #e73f32;
+  background: #da463e;
 }
 
 .keisan > [class^=keisan-box] > .num-div > .div-info:before {
-  border-top-color: #e73f32;
+  border-top-color: #da463e;
 }
 
 .keisan > .keisan-box-2 {
@@ -72,7 +79,6 @@ ul {
   width: 80px;
   height: 80px;
   float: left;
-  border: 4px dashed #0099ff;
   margin: 80px 0 0 20px;
 }
 
@@ -80,21 +86,21 @@ ul {
   position: relative;
   width: 30px;
   height: 30px;
-  background: #0099ff;
-  border-radius: 2px;
+  background: #f58723;
+  border-radius: 5px;
   float: left;
   -webkit-transition: .2s linear;
   transition: .2s linear;
 }
 
 .keisan > .operator > li:hover {
-  background: #e73f32;
+  background: #da463e;
   cursor: pointer;
 }
 
 .keisan > .operator > li.choose {
-  background: #e73f32;
-  box-shadow: 0 0 0 1px #e73f32;
+  background: #da463e;
+  box-shadow: 0 0 0 1px #da463e;
 }
 
 .operator > .add {
@@ -104,7 +110,7 @@ ul {
 .add:before, .add:after, .multiply > span:before, .multiply > span:after  {
   content: '';
   position: absolute;
-  background: #fff;
+  background: #eee;
 }
 
 .add:before {
@@ -128,7 +134,7 @@ ul {
 .subtract:before {
   content: '';
   position: absolute;
-  background: #fff;
+  background: #eee;
   width: 18px;
   height: 2px;
   left: 6px;
@@ -169,7 +175,7 @@ ul {
 
 .divide > span {
   position: absolute;
-  background: #fff;
+  background: #eee;
   width: 18px;
   height: 2px;
   left: 6px;
@@ -182,7 +188,7 @@ ul {
   width: 4px;
   height: 4px;
   border-radius: 4px;
-  background: #fff;
+  background: #eee;
   left: 7px;
 }
 
@@ -199,10 +205,9 @@ ul {
   margin: 105px 0 0 20px;
   width: 60px;
   height: 35px;
-  color: #0099ff;
-  background: #fff;
+  color: #f58723;
   border-radius: 4px;
-  border: 2px solid #0099ff;
+  border: 2px solid #f58723;
   font-size: 40px;
   font-weight: 600;
   font-family: '微软雅黑';
@@ -211,22 +216,22 @@ ul {
 }
 
 .keisan > .div-create:hover {
-  color: #fff;
-  background: #0099ff;
+  color: #eee;
+  background: #f58723;
   cursor: pointer;
 }
 
 .num-div {
   width: 96px;
   height: 61.8px;
-  background: #0099ff;
+  background: #f58723;
   border-radius: 5px;
   padding: 0 14px;
   position: absolute;
   margin: auto;
   left: 0;
   right: 0;
-  top: 200px;
+  top: 175px;
   -webkit-transform: translate3d(0,0,0);
           transform: translate3d(0,0,0);
   -webkit-backface-visibility: hidden;
@@ -253,7 +258,7 @@ ul {
 .num-div > .div-answer {
   width: 100%;
   text-align: center;
-  color: #fff;
+  color: #eee;
   font-size: 20px;
   line-height: 61.8px;
   box-sizing: border-box;
@@ -279,8 +284,8 @@ ul {
   width: 155px;
   text-align: center;
   padding: 3px 5px;
-  background: #0099ff;
-  color: #fff;
+  background: #f58723;
+  color: #eee;
   border-radius: 5px;
   font-size: 10px;
   opacity: 0;
@@ -298,7 +303,7 @@ ul {
   width: 0;
   height: 0;
   border: 5px solid transparent;
-  border-top-color: #0099ff;
+  border-top-color: #f58723;
 }
 
 .keisan-choose {
@@ -310,9 +315,7 @@ ul {
   float: left;
   width: 100px;
   height: 30px;
-  background: #fff;
-  border: 1px solid #eee;
-  color: #0099ff;
+  color: #f58723;
   text-align: center;
   line-height: 30px;
   border-radius: 3px;
@@ -320,13 +323,13 @@ ul {
 }
 
 .keisan-choose > li.choose {
-  background: #0099ff;
-  color: #fff;
+  background: #f58723;
+  color: #eee;
 }
 
 /* mio精灵 */
 .mio {
-  position: absolute;
+  position: fixed;
   right: 10px;
   bottom: 10px;
   z-index: 5;
@@ -345,7 +348,7 @@ ul {
   width: 200px;
   left: -200px;
   top: -90px;
-  background: #0099ff;
+  background: #f58723;
   padding: 10px;
   border-radius: 5px;
   font-size: 10px;
@@ -371,7 +374,7 @@ ul {
   width: 32px;
   height: 50px;
   border: 0 solid transparent;
-  border-top: 19px solid #0099ff;
+  border-top: 19px solid #f58723;
   border-radius: 100px 0 0 0;
   -webkit-transform: rotate(270deg);
       -ms-transform: rotate(270deg);
@@ -379,7 +382,7 @@ ul {
 }
 
 .mio > .chat > p {
-  color: #fff;
+  color: #eee;
 }
 
 .mio > .chat > p > span{
