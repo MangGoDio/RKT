@@ -2,7 +2,7 @@
 
 'use strict'
 
-var divNum = 1
+var divNum = 0
 
 var body = document.querySelector('body')
 
@@ -24,7 +24,7 @@ var keisan = {
         keynum = e.which
       }
       if (keynum === 13) {
-        this.value = this.value.replace(/[^\d]/g,'')
+        this.value = this.value.replace(/[^\d\+\-\*\/]/g,'')
         answer = eval(this.value)
         create.saveDiv(answer)
       }
@@ -90,7 +90,7 @@ var create = {
     var oNumDiv = this.produceDiv(answer)
     if(equal) {
       oNumDiv.style.left = equal + 'px'
-      oNumDiv.style.top = '465px'
+      oNumDiv.style.top = '337px'
     }
     body.appendChild(oNumDiv)
 
