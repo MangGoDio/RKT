@@ -24,7 +24,7 @@ var keisan = {
         keynum = e.which
       }
       if (keynum === 13) {
-        this.value = this.value.replace(/[^\d\+\-\*\/]/g,'')
+        this.value = this.value.replace(/[^\d\+\-\*\.\/]/g,'')
         answer = eval(this.value)
         create.saveDiv(answer)
       }
