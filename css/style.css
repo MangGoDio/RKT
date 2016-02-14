@@ -2,7 +2,7 @@ html {
   font-family: '微软雅黑', arial, Helvetica, sans-serif;
 }
 
-body, h1, p, input, ul, li{
+body, h1, p, input, ul, li, button{
   margin: 0;
   padding: 0;
 }
@@ -14,7 +14,6 @@ ul {
 body {
   background: #373737;
 }
-
 
 [name=box] {
   width: 816px;
@@ -46,6 +45,10 @@ body {
   overflow: hidden;
 }
 
+.keisan-all > ul {
+  transition: 1s cubic-bezier(.68,-0.88,.48,2.02);
+}
+
 .keisan-all > ul > li {
   width: 800px;
   height: 250px;
@@ -69,6 +72,10 @@ body {
 
 .keisan > [class^=keisan-box] > .num-div > .div-info:before {
   border-top-color: #da463e;
+}
+
+.keisan > [class^=keisan-box] > .num-div > .div-del {
+  background: #da463e;
 }
 
 .keisan > .keisan-box-2 {
@@ -110,7 +117,7 @@ body {
 .add:before, .add:after, .multiply > span:before, .multiply > span:after  {
   content: '';
   position: absolute;
-  background: #eee;
+  background: #fff;
 }
 
 .add:before {
@@ -134,7 +141,7 @@ body {
 .subtract:before {
   content: '';
   position: absolute;
-  background: #eee;
+  background: #fff;
   width: 18px;
   height: 2px;
   left: 6px;
@@ -152,7 +159,6 @@ body {
   left: 6px;
   top: 6px;
   -webkit-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
           transform: rotate(45deg);
 }
 
@@ -175,7 +181,7 @@ body {
 
 .divide > span {
   position: absolute;
-  background: #eee;
+  background: #fff;
   width: 18px;
   height: 2px;
   left: 6px;
@@ -188,7 +194,7 @@ body {
   width: 4px;
   height: 4px;
   border-radius: 4px;
-  background: #eee;
+  background: #fff;
   left: 7px;
 }
 
@@ -198,6 +204,18 @@ body {
 
 .divide > span:after {
   bottom: 5px;
+}
+
+.all-box .keisan-box-3 {
+  margin: 80px 0 0 20%;
+}
+
+.all-box .keisan-box-4 {
+  margin: 0;
+}
+
+.all-box .keisan-box-5 {
+  margin: 0 0 0 20%;
 }
 
 .keisan > .div-create {
@@ -216,7 +234,7 @@ body {
 }
 
 .keisan > .div-create:hover {
-  color: #eee;
+  color: #fff;
   background: #f58723;
   cursor: pointer;
 }
@@ -248,17 +266,21 @@ body {
 
 .num-div:hover {
   -webkit-transform: translateY(-4px);
-      -ms-transform: translateY(-4px);
           transform: translateY(-4px);
   box-shadow: 0 6px 7px rgba(0, 0, 0, 0.25),
               0 11px 20px rgba(0, 0, 0, 0.25);
   z-index: 10;
 }
 
+.num-div.hide {
+  -webkit-animation: hide .5s ease-in-out forwards;
+          animation: hide .5s ease-in-out forwards;
+}
+
 .num-div > .div-answer {
   width: 100%;
   text-align: center;
-  color: #eee;
+  color: #fff;
   font-size: 20px;
   line-height: 61.8px;
   box-sizing: border-box;
@@ -285,7 +307,7 @@ body {
   text-align: center;
   padding: 3px 5px;
   background: #f58723;
-  color: #eee;
+  color: #fff;
   border-radius: 5px;
   font-size: 10px;
   opacity: 0;
@@ -306,6 +328,70 @@ body {
   border-top-color: #f58723;
 }
 
+.num-div > .div-tips-input {
+  font-family: '微软雅黑';
+  border: 0;
+  border-radius: 1px;
+  width: 94px;
+  margin-top: 3px;
+  text-align: center;
+  display: none;
+}
+
+.num-div > .div-tips-input.show {
+  display: block;
+  -webkit-animation: input .5s cubic-bezier(.68,-0.88,.48,2.02) forwards;
+          animation: input .5s cubic-bezier(.68,-0.88,.48,2.02) forwards;
+}
+
+.num-div > .div-tips {
+  text-align: center;
+  color: #fff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -20px;
+  font-size: 12px;
+}
+
+.num-div > .div-del {
+  background: #f58723;
+  border-radius: 50px;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  cursor: pointer;
+  display: none;
+}
+
+.num-div > .div-del.show {
+  display: block;
+  -webkit-animation: del 1s cubic-bezier(.68,-0.88,.48,2.02) forwards;
+          animation: del 1s cubic-bezier(.68,-0.88,.48,2.02) forwards;
+}
+
+.num-div > .div-del:before, .num-div > .div-del:after {
+  content: '';
+  position: absolute;
+}
+
+.num-div > .div-del:before {
+  border-top: 2px solid #fff;
+  width: 70%;
+  left: 19%;
+  top: 44%;
+}
+
+.num-div > .div-del:after {
+  border-left: 2px solid #fff;
+  height: 70%;
+  left: 48%;
+  top: 14%;
+}
+
 .keisan-choose {
   width: 408px;
   margin: 50px auto;
@@ -324,7 +410,7 @@ body {
 
 .keisan-choose > li.choose {
   background: #f58723;
-  color: #eee;
+  color: #fff;
 }
 
 /* mio精灵 */
@@ -353,9 +439,9 @@ body {
   border-radius: 5px;
   font-size: 10px;
   opacity: 0;
+  -webkit-transition: .5s ease-in-out;
   transition: .5s ease-in-out;
   -webkit-transform-origin: right bottom;
-      -ms-transform-origin: right bottom;
           transform-origin: right bottom;
   box-shadow: 0 1px 3px rgba(0,0,0,0.08),
               0 2px 3px rgba(0,0,0,0.15);
@@ -377,12 +463,11 @@ body {
   border-top: 19px solid #f58723;
   border-radius: 100px 0 0 0;
   -webkit-transform: rotate(270deg);
-      -ms-transform: rotate(270deg);
           transform: rotate(270deg);
 }
 
 .mio > .chat > p {
-  color: #eee;
+  color: #fff;
 }
 
 .mio > .chat > p > span{
@@ -448,5 +533,81 @@ body {
     opacity: 1;
     -webkit-transform: scale(1);
             transform: scale(1);
+  }
+}
+
+@-webkit-keyframes del {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: rotate(45deg) scale(1);
+            transform: rotate(45deg) scale(1);
+  }
+}
+
+@keyframes del {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: rotate(45deg) scale(1);
+            transform: rotate(45deg) scale(1);
+  }
+}
+
+@-webkit-keyframes input {
+  0% {
+    margin-top: 1px;
+    opacity: 0;
+  }
+  100% {
+    margin-top: 5px;
+    opacity: 1;
+  }
+}
+
+@keyframes input {
+  0% {
+    margin-top: 1px;
+    opacity: 0;
+  }
+  100% {
+    margin-top: 5px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes hide {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    top: 150px;
+  }
+}
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    top: 150px;
   }
 }

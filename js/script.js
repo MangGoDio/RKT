@@ -24,9 +24,13 @@ var keisan = {
         keynum = e.which
       }
       if (keynum === 13) {
-        this.value = this.value.replace(/[^\d\+\-\*\.\/]/g,'')
-        answer = eval(this.value)
-        create.saveDiv(answer)
+        this.value = this.value.replace(/[^\d\+\-\*\.\/\(\)]/g,'')
+        if(this.value === '') {
+          mio.text('<p><span>没数据，不给生成</span></p>')
+        } else {
+          answer = eval(this.value)
+          create.saveDiv(answer)
+        }
       }
     })
 
@@ -63,17 +67,16 @@ var keisan = {
     })
 
     ;(function(){
+      var boxAll = document.querySelector('.all-box'),
+          length
       for (var i = 0, wry = aRollBtn.length; i < wry; i++) {
         aRollBtn[i].addEventListener('click', function(){
-          if(this.className !== 'choose') {
-            mio.text('<p><span>功能还没做啦，别瞎J8点</span></p>')
-          }
-        /*
           for (var j = 0; j < wry; j++) {
             aRollBtn[j].classList.remove('choose')
           }
           this.classList.add('choose')
-        */
+          length = this.getAttribute('loc')
+          boxAll.style.marginTop = (0 - length) * 250 + 'px'
         })
       }
     })()
@@ -88,6 +91,10 @@ var create = {
         divX = 0,
         divY = 0
     var oNumDiv = this.produceDiv(answer)
+    var oNumDel = oNumDiv.querySelector('.div-del')
+    var oNumInput = oNumDiv.querySelector('.div-tips-input')
+    var oNumTips = oNumDiv.querySelector('.div-tips')
+    var oNumInfo = oNumDiv.querySelector('.div-info')
     if(equal) {
       oNumDiv.style.left = equal + 'px'
       oNumDiv.style.top = '337px'
@@ -96,6 +103,10 @@ var create = {
 
     oNumDiv.addEventListener('dragstart',
     function(e) {
+      oNumDel.classList.remove('show')
+      oNumTips.style.display = 'none'
+      oNumInfo.style.display = 'none'
+      oNumInput.classList.remove('show')
       pageX = e.pageX, pageY = e.pageY
       var oDrag = e.dataTransfer
       oDrag.effectAllowed = 'copy'
@@ -111,22 +122,63 @@ var create = {
       divX += stepX, divY += stepY
       console.log(divX)
       oNumDiv.style.transform = 'translate(' + divX + 'px,' + divY + 'px)'
+      oNumTips.style.display = 'block'
     })
 
     oNumDiv.addEventListener('mouseover',
     function () {
-      this.querySelector('.div-info').style.display = 'block'
+      oNumInfo.style.display = 'block'
     })
 
-    oNumDiv.addEventListener('mousedown',
-    function () {
-      this.querySelector('.div-info').style.display = 'none'
+    oNumDiv.addEventListener('contextmenu',
+    function (e) {
+      e.preventDefault()
+      oNumDel.classList.add('show')
+      oNumInput.classList.add('show')
+      oNumTips.style.display = 'none'
+      return false
     })
+
+    oNumDel.addEventListener('click',
+    function () {
+      this.parentNode.classList.add('hide')
+      setTimeout (function () {
+        oNumDel.parentNode.parentNode.removeChild(oNumDel.parentNode)
+      }, 500)
+    })
+
+    oNumInput.addEventListener('keydown',
+    function (e) {
+      var keynum,
+          answer
+      if (window.event) {
+        keynum = e.keyCode
+      } else if (e.which) {
+        keynum = e.which
+      }
+      if (keynum === 13) {
+        oNumTips.textContent = this.value
+        this.classList.remove('show')
+        oNumTips.style.display = 'block'
+      }
+    })
+
+    oNumInput.addEventListener('blur',
+    function () {
+      oNumTips.textContent = this.value
+      this.classList.remove('show')
+      oNumTips.style.display = 'block'
+    })
+
 
   },
   produceDiv : function (answer) {
     divNum++
-    var oDiv = '<p class="div-answer">' + answer + '</p><span class="div-info">' + answer + '</span>'
+    var oDiv = '<p class="div-answer">'+ answer + '</p> \
+                <span class="div-info">' + answer + '</span> \
+                <a class="div-tips"></a> \
+                <input class="div-tips-input" type="text" placeholder="注释"/> \
+                <span class="div-del"></span>'
     var oDivNode = document.createElement('div')
     oDivNode.classList.add('num-div')
     oDivNode.setAttribute('draggable', 'true')
