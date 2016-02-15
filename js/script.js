@@ -12,6 +12,10 @@ var keisan = {
   addEvent : function () {
     var oInput = document.querySelector('.create .create-edit'),
         equalBtnBasic = document.querySelector('.basic .div-create'),
+        equalBtnPow = document.querySelector('.pow .div-create'),
+        equalBtnSqrt = document.querySelector('.sqrt .div-create'),
+        equalBtnLog = document.querySelector('.log .div-create'),
+        equalBtnRandom = document.querySelector('.random .div-create'),
         aOpeartors = document.querySelectorAll('.operator > li'),
         aRollBtn = document.querySelectorAll('.keisan-choose > li')
 
@@ -36,7 +40,8 @@ var keisan = {
 
     ;(function(){
       for (var i = 0, wry = aOpeartors.length; i < wry; i++) {
-        aOpeartors[i].addEventListener('click', function(){
+        aOpeartors[i].addEventListener('click',
+        function(){
           for (var j = 0; j < wry; j++) {
             aOpeartors[j].classList.remove('choose')
           }
@@ -45,7 +50,8 @@ var keisan = {
       }
     })()
 
-    equalBtnBasic.addEventListener('click', function(e){
+    equalBtnBasic.addEventListener('click',
+    function() {
       var firstNode = document.querySelector('.keisan-box-1 .num-div:last-child > p'),
           lastNode = document.querySelector('.keisan-box-2 .num-div:last-child > p'),
           optNumNode = document.querySelector('.operator > li.choose'),
@@ -62,7 +68,78 @@ var keisan = {
       }
       optNum = optNumNode.getAttribute('name')
       answer = eval(firstNum + optNum + lastNum)
-      equal = equalBtnBasic.offsetLeft - document.body.offsetWidth / 2  + 440
+      equal = equalBtnBasic.offsetLeft - document.body.offsetWidth / 2  + 410
+      create.saveDiv(answer, equal)
+    })
+
+    equalBtnPow.addEventListener('click',
+    function() {
+      var firstNode = document.querySelector('.keisan-box-3 .num-div:last-child > p'),
+          lastNode = document.querySelector('.keisan-box-4 .num-div:last-child > p'),
+          firstNum, lastNum, answer, equal
+      firstNum = firstNode ? firstNode.textContent : 'space'
+      lastNum = lastNode ? lastNode.textContent : 'space'
+      if (firstNum === 'space' || lastNum === 'space') {
+        mio.text('<p><span>加空气啊!</span></p>')
+        return false
+      }
+      answer = Math.pow(firstNum, lastNum)
+      equal = equalBtnPow.offsetLeft - document.body.offsetWidth / 2  + 340
+      create.saveDiv(answer, equal)
+    })
+
+    equalBtnSqrt.addEventListener('click',
+    function() {
+      var firstNode = document.querySelector('.keisan-box-5 .num-div:last-child > p'),
+          firstNum, answer, equal
+      firstNum = firstNode ? firstNode.textContent : 'space'
+      if (firstNum === 'space') {
+        mio.text('<p><span>加空气啊!</span></p>')
+        return false
+      }
+      answer = Math.sqrt(firstNum)
+      equal = equalBtnSqrt.offsetLeft - document.body.offsetWidth / 2  + 250
+      create.saveDiv(answer, equal)
+    })
+
+    equalBtnLog.addEventListener('click',
+    function() {
+      var firstNode = document.querySelector('.keisan-box-6 .num-div:last-child > p'),
+          lastNode = document.querySelector('.keisan-box-7 .num-div:last-child > p'),
+          firstNum, lastNum, answer, equal
+      firstNum = firstNode ? firstNode.textContent : 'space'
+      lastNum = lastNode ? lastNode.textContent : 'space'
+      if (firstNum === 'space' || lastNum === 'space') {
+        mio.text('<p><span>加空气啊!</span></p>')
+        return false
+      }
+      answer = Math.log(lastNum)/Math.log(firstNum)
+      equal = equalBtnLog.offsetLeft - document.body.offsetWidth / 2  + 400
+      create.saveDiv(answer, equal)
+    })
+
+    equalBtnRandom.addEventListener('click',
+    function() {
+      var firstNode = document.querySelector('.keisan-box-8 .num-div:last-child > p'),
+          lastNode = document.querySelector('.keisan-box-9 .num-div:last-child > p'),
+          firstNum, lastNum, answer, equal, min, max
+      firstNum = firstNode ? firstNode.textContent : 'space'
+      lastNum = lastNode ? lastNode.textContent : 'space'
+      if (firstNum === 'space' || lastNum === 'space') {
+        mio.text('<p><span>哥范围给一个好不</span></p>')
+        return false
+      }
+      if(firstNum >= lastNum) {
+        max = firstNum
+        min = lastNum
+      } else {
+        min = firstNum
+        max = lastNum
+      }
+      max = Math.floor(max)
+      min = Math.ceil(min)
+      answer = Math.floor(Math.random()*(max-min+1) + parseInt(min))
+      equal = equalBtnRandom.offsetLeft - document.body.offsetWidth / 2  + 400
       create.saveDiv(answer, equal)
     })
 
@@ -70,13 +147,24 @@ var keisan = {
       var boxAll = document.querySelector('.all-box'),
           length
       for (var i = 0, wry = aRollBtn.length; i < wry; i++) {
-        aRollBtn[i].addEventListener('click', function(){
+        aRollBtn[i].addEventListener('click',
+        function(){
           for (var j = 0; j < wry; j++) {
             aRollBtn[j].classList.remove('choose')
           }
           this.classList.add('choose')
           length = this.getAttribute('loc')
           boxAll.style.marginTop = (0 - length) * 250 + 'px'
+          switch(length) {
+            case '2':
+              setTimeout(function() {
+                mio.text('<p><span>目前仅支持平方根计算</span></p>')
+              }, 500); break
+            case '4':
+              setTimeout(function() {
+                mio.text('<p><span>请装填随机数的生成范围</span></p>')
+              }, 500); break
+          }
         })
       }
     })()
@@ -95,6 +183,10 @@ var create = {
         oNumInput = oNumDiv.querySelector('.div-tips-input'),
         oNumTips = oNumDiv.querySelector('.div-tips'),
         oNumInfo = oNumDiv.querySelector('.div-info')
+    if(!isFinite(answer)) {
+      mio.text('<p><span>太大了♂塞不下</span></p>')
+      return false
+    }
     if(equal) {
       oNumDiv.style.left = equal + 'px'
       oNumDiv.style.top = '337px'
@@ -233,18 +325,19 @@ var mio = {
     chat.innerHTML = html
     mio.show(chat)
   },
-  show: function (node) {
+  show : function (node) {
     node.classList.add('show')
     setTimeout(function () {
       mio.hide(chat)
     }, 5000)
   },
-  hide: function (node) {
+  hide : function (node) {
     node.classList.remove('show')
   },
   addEvent : function () {
     var oMioImg = document.querySelector('.mio > img')
-    oMioImg.addEventListener('click', function () {
+    oMioImg.addEventListener('click',
+    function () {
       if (chat.className === 'chat') {
         mio.show(chat)
       } else {

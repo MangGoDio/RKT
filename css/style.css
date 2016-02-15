@@ -207,15 +207,47 @@ body {
 }
 
 .all-box .keisan-box-3 {
-  margin: 80px 0 0 20%;
+  margin: 100px 0 0 17%;
 }
 
 .all-box .keisan-box-4 {
-  margin: 0;
+  margin: 20px 0 0 0%;
 }
 
 .all-box .keisan-box-5 {
-  margin: 0 0 0 20%;
+  margin: 80px 0 0 25%;
+}
+
+.all-box .keisan-box-6 {
+  margin: 110px 0 0 1%;
+}
+
+.all-box .keisan-box-7 {
+  margin: 85px 0 0 1%;
+}
+
+.all-box .keisan-box-8 {
+  margin: 85px 0 0 12%;
+}
+
+.all-box .keisan-box-9 {
+  margin: 85px 0 0 1%;
+}
+
+.all-box .random > span:first-of-type {
+  color: #f58723;
+  font-size: 100px;
+  float: left;
+  display: block;
+  margin: 55px 0 0 1%;
+}
+
+.all-box .log > span:first-of-type {
+  color: #f58723;
+  font-size: 75px;
+  float: left;
+  display: block;
+  margin: 55px 0 0 8%;
 }
 
 .keisan > .div-create {
@@ -237,6 +269,11 @@ body {
   color: #fff;
   background: #f58723;
   cursor: pointer;
+}
+
+.all-box > .sqrt {
+  background: url(../img/reagan.png) no-repeat;
+  background-position: 24% 37%;
 }
 
 .num-div {
@@ -393,7 +430,7 @@ body {
 }
 
 .keisan-choose {
-  width: 408px;
+  width: 510px;
   margin: 50px auto;
 }
 
