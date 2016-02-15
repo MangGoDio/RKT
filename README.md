@@ -25,3 +25,6 @@ Random Keisan Tool
 1、输入空值生成undefined计算块  
 缺少功能：  
 1、虚拟计算器
+
+【2016-02-14】v0.66 Beta
+添加标签页图标 

@@ -10,10 +10,10 @@ var chat = document.querySelector('.mio .chat')
 
 var keisan = {
   addEvent : function () {
-    var oInput = document.querySelector('.create .create-edit')
-    var equalBtnBasic = document.querySelector('.basic .div-create')
-    var aOpeartors = document.querySelectorAll('.operator > li')
-    var aRollBtn = document.querySelectorAll('.keisan-choose > li')
+    var oInput = document.querySelector('.create .create-edit'),
+        equalBtnBasic = document.querySelector('.basic .div-create'),
+        aOpeartors = document.querySelectorAll('.operator > li'),
+        aRollBtn = document.querySelectorAll('.keisan-choose > li')
 
     oInput.addEventListener('keydown', function(e){
       var keynum,
@@ -90,11 +90,11 @@ var create = {
         pageY,
         divX = 0,
         divY = 0
-    var oNumDiv = this.produceDiv(answer)
-    var oNumDel = oNumDiv.querySelector('.div-del')
-    var oNumInput = oNumDiv.querySelector('.div-tips-input')
-    var oNumTips = oNumDiv.querySelector('.div-tips')
-    var oNumInfo = oNumDiv.querySelector('.div-info')
+    var oNumDiv = this.produceDiv(answer),
+        oNumDel = oNumDiv.querySelector('.div-del'),
+        oNumInput = oNumDiv.querySelector('.div-tips-input'),
+        oNumTips = oNumDiv.querySelector('.div-tips'),
+        oNumInfo = oNumDiv.querySelector('.div-info')
     if(equal) {
       oNumDiv.style.left = equal + 'px'
       oNumDiv.style.top = '337px'
