@@ -41,11 +41,32 @@ body {
   outline: 0;
 }
 
+.create > .tool-btn {
+  width: 43px;
+  height: 43px;
+  float: right;
+  background-color: #f58723;
+  border-radius: 50px;
+  margin: 43px 30px 0 0;
+  box-shadow: 0 1px 1px #d9781f;
+  cursor: pointer;
+}
+
+.create > .tool-btn > img {
+  width: 70%;
+  margin: 6px 0 0 7px;
+}
+
+.create > .tool-btn:active {
+  box-shadow: 0 0 1px 1px #373737 inset;
+}
+
 .keisan-all {
   overflow: hidden;
 }
 
 .keisan-all > ul {
+  -webkit-transition: 1s cubic-bezier(.68,-0.88,.48,2.02);
   transition: 1s cubic-bezier(.68,-0.88,.48,2.02);
 }
 
@@ -417,16 +438,16 @@ body {
 
 .num-div > .div-del:before {
   border-top: 2px solid #fff;
-  width: 70%;
-  left: 19%;
-  top: 44%;
+  width: 74%;
+  left: 13%;
+  top: 48%;
 }
 
 .num-div > .div-del:after {
   border-left: 2px solid #fff;
-  height: 70%;
+  height: 74%;
   left: 48%;
-  top: 14%;
+  top: 13%;
 }
 
 .keisan-choose {
@@ -513,6 +534,74 @@ body {
   text-align: center;
 }
 
+/* 虚拟计算器 */
+.keyboard {
+  position: fixed;
+  width: 500px;
+  height: 370px;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 5px;
+  background: #373737;
+  box-shadow: 0px 0px 1px 3px #eee;
+  box-sizing: border-box;
+  padding: 20px;
+  color: #fff;
+  font-size: 30px;
+  text-align: center;
+  line-height: 50px;
+  font-weight: 900;
+  display: none;
+  -webkit-transition: 1s;
+  transition: 1s;
+  overflow: hidden;
+  opacity: 0;
+  -webkit-user-select:none;
+     -moz-user-select:none;
+      -ms-user-select:none;
+          user-select:none;
+}
+
+.keyboard.show {
+  display: block;
+  -webkit-animation: show2 1.5s cubic-bezier(.68,-0.88,.48,2.02) forwards;
+          animation: show2 1.5s cubic-bezier(.68,-0.88,.48,2.02) forwards;
+}
+
+.keyboard > li {
+  margin-bottom: 30px;
+  height: 40px;
+}
+
+.keyboard > li:last-of-type {
+  margin-bottom: 0;
+}
+
+.keyboard > li > ul > li {
+  width: 100px;
+  height: 50px;
+  float: left;
+  margin-right: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0px 0px 1px 2px #d9781f;
+}
+
+.keyboard > li > ul > li:active {
+  background: #f58723;
+}
+
+.keyboard > li > ul > li:last-of-type {
+  margin-right: 0;
+}
+
+.keyboard .width {
+  width: 220px;
+}
+
 @-webkit-keyframes show {
   0% {
     opacity: 0;
@@ -525,6 +614,7 @@ body {
             transform: scale(0.9);
   }
   100% {
+    opacity: 1;
     -webkit-transform: scale(1);
             transform: scale(1);
   }
@@ -542,8 +632,35 @@ body {
             transform: scale(0.9);
   }
   100% {
+    opacity: 1;
     -webkit-transform: scale(1);
             transform: scale(1);
+  }
+}
+
+@-webkit-keyframes show2 {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+            transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes show2 {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+            transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
   }
 }
 
